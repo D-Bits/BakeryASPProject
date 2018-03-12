@@ -16,7 +16,26 @@ namespace BakeryASP.Controllers
 
         public ActionResult Index()
         {
-           
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult(
+            [Bind(Include =
+            "LastName, " +
+            "FirstName, " +
+            "Email, " +
+            "Phone, ")
+            ]NewPerson np)
+        {
+            int result = db.usp_Register(
+                np.LastName,
+                np.FirstName,
+                np.Email,
+                np.Phone);
+
+            return View();
         }
 
     }
