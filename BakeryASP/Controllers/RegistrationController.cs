@@ -27,13 +27,11 @@ namespace BakeryASP.Controllers
             "FirstName, " +
             "Email, " +
             "Phone, ")
-            ]NewPerson np)
+            ]Person p)
         {
-            int result = db.usp_Register(
-                np.LastName,
-                np.FirstName,
-                np.Email,
-                np.Phone);
+
+            db.People.Add(p);
+            db.SaveChanges();
 
             return View();
         }
