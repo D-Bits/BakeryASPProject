@@ -4,14 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BakeryASP.Models;
-using BakeryASP.Controllers;
 
 namespace BakeryASP.Controllers
 {
     public class ProductController : Controller
     {
 
-        BakeryEntities db = new BakeryEntities();
+        BakeryEntities2 db = new BakeryEntities2();
 
         // GET: Product
         public ActionResult Index()
