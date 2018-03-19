@@ -349,6 +349,9 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Result.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Order.cshtml" />
+    <Content Include="Views\Registration\Index.cshtml" />
+    <Content Include="Views\Registration\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".vs\BakeryASP\v15\" />
