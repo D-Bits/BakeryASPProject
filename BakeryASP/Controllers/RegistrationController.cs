@@ -16,8 +16,8 @@ namespace BakeryASP.Controllers
 
     {
 
-        BakeryEntities1 db = new BakeryEntities1();
-        public ActionResult RegisterUser()
+        BakeryEntities db = new BakeryEntities();
+        public ActionResult Index()
         {
             return View();
         }
@@ -26,21 +26,26 @@ namespace BakeryASP.Controllers
 
         [ValidateAntiForgeryToken]
 
-        public ActionResult RegisterUser
+        public ActionResult Index
             ([Bind(Include =
-            "LastName, " +
-            "FirstName, " +
-            "Email, " +
-            "Phone, ")
+            "PersonLastName, " +
+            "PersonFirstName, " +
+            "PersonEmail, " +
+            "PersonPhone, ")
             ]Person p)
 
         {
-
+            p.PersonDateAdded = DateTime.Now;
             db.People.Add(p);
             db.SaveChanges();
 
-            return View();
+            return View("Result");
 
+        }
+
+        public ActionResult Result()
+        {
+            return View();
         }
 
     }
