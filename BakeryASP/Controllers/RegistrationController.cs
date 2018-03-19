@@ -16,7 +16,7 @@ namespace BakeryASP.Controllers
 
     {
 
-        BakeryEntities db = new BakeryEntities();
+        BakeryEntities1 db = new BakeryEntities1();
         public ActionResult Index()
         {
             return View();
@@ -28,24 +28,19 @@ namespace BakeryASP.Controllers
 
         public ActionResult Index
             ([Bind(Include =
-            "PersonLastName, " +
-            "PersonFirstName, " +
-            "PersonEmail, " +
-            "PersonPhone, ")
+            "LastName, " +
+            "FirstName, " +
+            "Email, " +
+            "Phone, ")
             ]Person p)
 
         {
-            p.PersonDateAdded = DateTime.Now;
+
             db.People.Add(p);
             db.SaveChanges();
 
-            return View("Result");
-
-        }
-
-        public ActionResult Result()
-        {
             return View();
+
         }
 
     }
