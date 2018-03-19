@@ -11,7 +11,7 @@ namespace BakeryASP.Controllers
     public class ProductController : Controller
     {
 
-        BakeryEntities db = new BakeryEntities();
+        BakeryEntities1 db = new BakeryEntities1();
 
         // GET: Product
         public ActionResult Index()
