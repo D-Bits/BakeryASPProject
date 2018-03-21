@@ -9,8 +9,7 @@ namespace BakeryASP.Controllers
 {
     public class ProductController : Controller
     {
-
-        BakeryEntities2 db = new BakeryEntities2();
+        BakeryEntities1 db = new BakeryEntities1();
 
         // GET: Product
         public ActionResult Index()

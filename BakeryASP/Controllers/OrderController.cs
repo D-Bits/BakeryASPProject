@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +10,7 @@ namespace BakeryASP.Controllers
     public class OrderController : Controller
     {
         BakeryEntities2 db = new BakeryEntities2();
-        
+
         Order o = new Order();
 
         // GET: Order
@@ -20,25 +20,51 @@ namespace BakeryASP.Controllers
         public ActionResult Index([Bind(Include = "SaleDate, EmployeeKey, " +
                                                   "CustomerKey, ProductKey, SaleDetailPriceCharged, " +
                                                   "SaleDetailQuantity, SaleDetailDiscount, SaleDetailSaleTaxPercent, " +
-                                                  "SaleDetailEatInTax, ItemsOrdered, SubTotal, Total")]Order o)
+                                                  "SaleDetailEatInTax")]Order o)
         {
+            Sale s = new Sale();
+            SaleDetail sd = new SaleDetail();
+            s.SaleDate = o.SaleDate;
+            s.EmployeeKey = o.EmployeeKey;
+            s.CustomerKey = o.CustomerKey;
+            sd.ProductKey = o.ProductKey;
+            sd.SaleDetailPriceCharged = o.SaleDetailPriceCharged;
+            sd.SaleDetailQuantity = o.SaleDetailQuantity;
+            sd.SaleDetailDiscount = o.SaleDetailDiscount;
+            sd.SaleDetailSaleTaxPercent = o.SaleDetailSaleTaxPercent;
+            sd.SaleDetailEatInTax = o.SaleDetailEatInTax;
             
-            o.ItemsOrdered = o.ProductKey + o.SaleDetailQuantity;
-            o.SubTotal = o.ItemsOrdered * o.SaleDetailPriceCharged;
-            o.Total = o.SubTotal * (1 + o.SaleDetailSaleTaxPercent);
-            if(o.EatIn > 0)
-            {
-                o.EatIn = o.Total * (1 + o.SaleDetailEatInTax);
-            }
-
             return View("Result");
 
         }
-        public ActionResult Result()
+
+        public ActionResult Index()
+        {
+            return View(db.Products.ToList());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Order([Bind(Include = "ItemsOrdered, SubTotal, Total, EatIn")]Order or)
+        {
+            SaleDetail de = new SaleDetail();
+            or.ItemsOrdered = de.SaleDetailQuantity;
+            or.Total = or.ItemsOrdered * de.SaleDetailPriceCharged;
+            
+            return View("Result", or);
+        }
+
+        public ActionResult Order()
         {
             return View();
+        }
+
+        public ActionResult Result(Order o)
+        {
+            return View(o);
         }
 
         
     }
 }
+
