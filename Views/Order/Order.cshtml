@@ -8,28 +8,27 @@
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal" value="Form">
-    <hr />
-    <div class="form-group">
-        @Html.LabelFor(model => model.ProductKey, "ProductKey", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ProductKey, "ProductKey", new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProductKey, "", new { @class = "text-danger" })
+    <div class="form-horizontal" value="Form">
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductKey, "ProductKey", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductKey, "ProductKey", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductKey, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.SaleDetailQuantity, "Quantity", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SaleDetailQuantity, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SaleDetailQuantity, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SaleDetailQuantity, "Quantity", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SaleDetailQuantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SaleDetailQuantity, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
-    
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Order" class="btn btn-default" />
-        </div>
-    </div>
-</div>
-}
 
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Order" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
