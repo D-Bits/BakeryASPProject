@@ -14,3 +14,5 @@ Create a web app for a fictious bakery to help customers purchase goods, and lea
 
 * Dana Lockwood
 * Marianne Goldin
+* James Shively
+* Morgan Richmond
